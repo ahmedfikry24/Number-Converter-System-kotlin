@@ -6,4 +6,13 @@
     <string name="decimal">Decimal</string>
     <string name="octal">Octal</string>
     <string name="hexa">hexa</string>
+    <string name="enter_binary">enter binary</string>
+    <string name="convert">Convert</string>
+    <string name="decimalTitle">Decimal :</string>
+    <string name="octal_title">Octal :</string>
+    <string name="hexaTitle">Hexadecimal :</string>
+    <string name="enter_decimal">enter decimal</string>
+    <string name="binary_title">Binary :</string>
+    <string name="enter_octal">enter octal</string>
+    <string name="enter_hexa">enter hexadecimal</string>
 </resources>
