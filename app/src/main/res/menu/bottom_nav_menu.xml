@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/binary"
+        android:title="@string/binary"
+        android:icon="@drawable/ic_binary"
+        />
+    <item
+        android:id="@+id/decimal"
+        android:title="@string/decimal"
+        android:icon="@drawable/ic_decimal"
+        />
+    <item
+        android:id="@+id/octal"
+        android:title="@string/octal"
+        android:icon="@drawable/ic_octal"
+        />
+    <item
+        android:id="@+id/hexa"
+        android:title="@string/hexa"
+        android:icon="@drawable/ic_hash"
+        />
+</menu>

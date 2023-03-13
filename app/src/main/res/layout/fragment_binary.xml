@@ -8,7 +8,7 @@
     tools:context=".fragments.BinaryFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/decimalEditText"
+        android:id="@+id/binaryEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintHeight_percent=".3"
@@ -31,7 +31,7 @@
         android:text="@string/convert"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/decimalEditText" />
+        app:layout_constraintTop_toBottomOf="@id/binaryEditText" />
 
     <LinearLayout
         android:id="@+id/binaryLinear"
