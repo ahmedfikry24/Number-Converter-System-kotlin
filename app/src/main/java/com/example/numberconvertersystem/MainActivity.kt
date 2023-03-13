@@ -9,12 +9,10 @@ import com.example.numberconvertersystem.fragments.BinaryFragment
 import com.example.numberconvertersystem.fragments.DecimalFragment
 import com.example.numberconvertersystem.fragments.HexaDecimalFragment
 import com.example.numberconvertersystem.fragments.OctalFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binaryButton: Button
-    private lateinit var decimalButton: Button
-    private lateinit var octalButton: Button
-    private lateinit var hexaDecimalButton: Button
+    private lateinit var bottomNvigation: BottomNavigationView
     private val binaryFragment: BinaryFragment = BinaryFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,24 +23,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        binaryButton = findViewById(R.id.binaryButton)
-        decimalButton = findViewById(R.id.decimalButton)
-        octalButton = findViewById(R.id.octalButton)
-        hexaDecimalButton = findViewById(R.id.hexadecimalButton)
+        bottomNvigation = findViewById(R.id.bottomNavigation)
     }
 
     private fun initListeners() {
-        binaryButton.setOnClickListener {
-            showFragment(binaryFragment)
-        }
-        decimalButton.setOnClickListener {
-            showFragment(DecimalFragment())
-        }
-        octalButton.setOnClickListener {
-            showFragment(OctalFragment())
-        }
-        hexaDecimalButton.setOnClickListener {
-            showFragment(HexaDecimalFragment())
+        bottomNvigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.binary -> {
+                    showFragment(binaryFragment)
+                }
+                R.id.decimal -> {
+                    showFragment(DecimalFragment())
+                }
+                R.id.octal -> {
+                    showFragment(OctalFragment())
+                }
+                R.id.hexa -> {
+                    showFragment(HexaDecimalFragment())
+                }
+            }
+            return@setOnItemSelectedListener true
         }
     }
 

@@ -13,12 +13,12 @@ import java.util.*
 import kotlin.math.pow
 
 class BinaryFragment : Fragment() {
-    private lateinit var decimalTV: TextView
-    private lateinit var octalTV: TextView
-    private lateinit var hexaTV: TextView
-    private lateinit var binaryEditText: TextInputLayout
-    private lateinit var convertButton: Button
-    var binaryNumber: Long? = null
+    private lateinit var textViewDecimal: TextView
+    private lateinit var textViewOctal: TextView
+    private lateinit var textViewHexa: TextView
+    private lateinit var editTextBinary: TextInputLayout
+    private lateinit var buttonConvert: Button
+    private var binaryNumber: Long? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,26 +32,26 @@ class BinaryFragment : Fragment() {
         initListeners()
     }
 
-    fun initViewS(view: View) {
-        binaryEditText = view.findViewById(R.id.decimalEditText)
-        decimalTV = view.findViewById(R.id.decimalValue)
-        octalTV = view.findViewById(R.id.octalValue)
-        hexaTV = view.findViewById(R.id.hexaValue)
-        convertButton = view.findViewById(R.id.convertButton)
+    private fun initViewS(view: View) {
+        editTextBinary = view.findViewById(R.id.binaryEditText)
+        textViewDecimal = view.findViewById(R.id.decimalValue)
+        textViewOctal = view.findViewById(R.id.octalValue)
+        textViewHexa = view.findViewById(R.id.hexaValue)
+        buttonConvert = view.findViewById(R.id.convertButton)
     }
 
-    fun initListeners() {
-        convertButton.setOnClickListener {
-            if (!binaryEditText.editText?.text.isNullOrBlank()) {
-                binaryNumber = binaryEditText.editText?.text.toString().toLong()
-                decimalTV.text = ConvertBinaryToDecimal(binaryNumber!!).toString()
-                octalTV.text = ConvertBinarytoOctal(binaryNumber!!).toString()
-                hexaTV.text = ConvertDecimalToHex(binaryNumber!!)
+    private fun initListeners() {
+        buttonConvert.setOnClickListener {
+            if (!editTextBinary.editText?.text.isNullOrBlank()) {
+                binaryNumber = editTextBinary.editText?.text.toString().toLong()
+                textViewDecimal.text = convertBinaryToDecimal(binaryNumber!!).toString()
+                textViewOctal.text = convertBinarytoOctal(binaryNumber!!).toString()
+                textViewHexa.text = convertDecimalToHex(binaryNumber!!)
             }
         }
     }
 
-    private fun ConvertBinaryToDecimal(num: Long): Long {
+    private fun convertBinaryToDecimal(num: Long): Long {
         var binaryNumber = num
         var decimalNumber: Long = 0.toLong()
         var base = 1
@@ -64,7 +64,7 @@ class BinaryFragment : Fragment() {
         return decimalNumber
     }
 
-    fun ConvertBinarytoOctal(number: Long): Int {
+    private fun convertBinarytoOctal(number: Long): Int {
         var binaryNumber = number
         var octalNumber = 0
         var decimalNumber = 0
@@ -87,9 +87,9 @@ class BinaryFragment : Fragment() {
         return octalNumber
     }
 
-    fun ConvertDecimalToHex(binary: Long): String {
+    private fun convertDecimalToHex(binary: Long): String {
 
-        val decimalNumber = ConvertBinaryToDecimal(binary)
+        val decimalNumber = convertBinaryToDecimal(binary)
 
         var hexNumber = Integer.toHexString(decimalNumber.toInt())
 

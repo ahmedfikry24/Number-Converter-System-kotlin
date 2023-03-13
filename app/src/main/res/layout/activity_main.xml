@@ -4,79 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:padding="@dimen/margin_16"
     android:background="@color/variant"
-    >
+    android:padding="@dimen/margin_16"
+    tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/buttonsScroll"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/variant"
+        android:paddingVertical="@dimen/margin_8"
+        app:itemTextColor="@color/secondary"
+        app:itemIconTint="@drawable/converter_buttons_selector"
         app:layout_constraintTop_toTopOf="parent"
-        android:scrollbars="horizontal"
-        >
-       <HorizontalScrollView
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:layout_constraintTop_toTopOf="parent"
-               android:orientation="horizontal"
-               >
-               <Button
-                   android:id="@+id/binaryButton"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/binary"
-                   android:background="@drawable/converter_buttons_selector"
-                   android:layout_marginEnd="@dimen/margin_4"
-                   android:textColor="@color/white"
-                   />
-
-               <Button
-                   android:id="@+id/decimalButton"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/decimal"
-                   android:background="@drawable/converter_buttons_selector"
-                   android:layout_marginEnd="@dimen/margin_4"
-                   android:textColor="@color/white"
-                   />
-
-               <Button
-                   android:id="@+id/octalButton"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/octal"
-                   android:background="@drawable/converter_buttons_selector"
-                   android:layout_marginEnd="@dimen/margin_4"
-                   android:textColor="@color/white"
-                   />
-
-               <Button
-                   android:id="@+id/hexadecimalButton"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/hexa"
-                   android:background="@drawable/converter_buttons_selector"
-                   android:layout_marginEnd="@dimen/margin_4"
-                   android:textColor="@color/white"
-                   />
-           </LinearLayout>
-
-       </HorizontalScrollView>
-
-    </ScrollView>
+        app:menu="@menu/bottom_nav_menu"
+        />
 
     <FrameLayout
         android:id="@+id/mainFrame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/buttonsScroll"
         android:layout_marginTop="@dimen/margin_20"
-        />
+        app:layout_constraintTop_toBottomOf="@id/bottomNavigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
