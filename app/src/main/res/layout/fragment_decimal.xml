@@ -11,7 +11,6 @@
         android:id="@+id/decimalEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintHeight_percent=".3"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
@@ -37,9 +36,10 @@
         android:id="@+id/binaryLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/view1"
-        app:layout_constraintTop_toBottomOf="@id/convertButton">
+        app:layout_constraintTop_toBottomOf="@id/convertButton"
+        android:orientation="horizontal"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,6 +50,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/binaryValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -85,6 +86,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/octalValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -118,6 +120,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/hexaValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"

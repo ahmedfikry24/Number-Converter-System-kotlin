@@ -50,6 +50,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/decimalValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -85,6 +86,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/binaryValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -118,6 +120,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/hexaValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
