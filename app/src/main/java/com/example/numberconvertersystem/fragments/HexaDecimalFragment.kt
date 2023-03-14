@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import com.example.numberconvertersystem.R
 import com.google.android.material.textfield.TextInputLayout
 
@@ -15,7 +16,7 @@ class HexaDecimalFragment : Fragment() {
     private lateinit var textViewDecimal: TextView
     private lateinit var textViewOctal: TextView
     private lateinit var editTextHexa: TextInputLayout
-    private lateinit var buttonConvert: Button
+    private lateinit var buttonClear: Button
     private var hexaNumber: String? = null
     private val HEXADECIMAL_BASE = 16
     private val OCTAL_BASE = 8
@@ -41,31 +42,24 @@ class HexaDecimalFragment : Fragment() {
         textViewBinary = view.findViewById(R.id.binaryValue)
         textViewDecimal = view.findViewById(R.id.decimalValue)
         textViewOctal = view.findViewById(R.id.octalValue)
-        buttonConvert = view.findViewById(R.id.convertButton)
+        buttonClear = view.findViewById(R.id.clearButton)
     }
 
     private fun initListeners() {
-        buttonConvert.setOnClickListener {
-            if (!editTextHexa.editText?.text.isNullOrBlank()) {
-                hexaNumber = editTextHexa.editText?.text.toString()
-                convertHexToAll()
+            editTextHexa.editText?.addTextChangedListener {
+                if (!editTextHexa.editText?.text.isNullOrBlank()) {
+                    hexaNumber = editTextHexa.editText?.text.toString()
+                    convertHexToAll()
+                }
             }
+            buttonClear.setOnClickListener {
+                clearAllTextViews()
         }
-    }
-
-    private fun validate(): Boolean {
-        var valid = false
-        if (editTextHexa.editText?.text.isNullOrBlank()) {
-            valid = true
-        }
-        return valid
     }
 
     private fun convertHexToAll() {
-        if (validate()) return
 
-        val input = hexaNumber!!
-        val outputDecimal = input.toLong(HEXADECIMAL_BASE).toString()
+        val outputDecimal = hexaNumber!!.toLong(HEXADECIMAL_BASE).toString()
         val outputBinary = outputDecimal.toLong().toString(BINARY_BASE)
         val outputOctal = outputDecimal.toLong().toString(OCTAL_BASE)
 
@@ -73,5 +67,12 @@ class HexaDecimalFragment : Fragment() {
         textViewBinary.text = outputBinary
         textViewOctal.text = outputOctal
 
+    }
+
+    private fun clearAllTextViews() {
+        textViewDecimal.text = "0"
+        textViewOctal.text = "0"
+        textViewBinary.text = "0"
+        editTextHexa.editText?.text?.clear()
     }
 }

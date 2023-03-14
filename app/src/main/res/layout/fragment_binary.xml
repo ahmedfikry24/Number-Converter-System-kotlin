@@ -10,28 +10,20 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/binaryEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintHeight_percent=".3"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/binaryLinear"
+        >
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/enter_binary" />
+            android:hint="@string/enter_binary"
+            android:inputType="number"
+            android:digits="01"
+            />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/convertButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/margin_20"
-        android:background="@drawable/convert_shape"
-        android:paddingHorizontal="@dimen/margin_8"
-        android:paddingVertical="@dimen/margin_4"
-        android:text="@string/convert"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/binaryEditText" />
 
     <LinearLayout
         android:id="@+id/binaryLinear"
@@ -39,7 +31,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/view1"
-        app:layout_constraintTop_toBottomOf="@id/convertButton">
+        app:layout_constraintTop_toBottomOf="@id/binaryEditText"
+        android:layout_marginTop="@dimen/margin_20"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -128,5 +122,16 @@
             android:textColor="@color/lightGrey"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/hexaLinear"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginHorizontal="@dimen/margin_20"
+        android:background="@drawable/convert_shape"
+        android:text="@string/clear"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

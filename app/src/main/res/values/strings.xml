@@ -15,4 +15,5 @@
     <string name="binary_title">Binary :</string>
     <string name="enter_octal">enter octal</string>
     <string name="enter_hexa">enter hexadecimal</string>
+    <string name="clear">Clear</string>
 </resources>

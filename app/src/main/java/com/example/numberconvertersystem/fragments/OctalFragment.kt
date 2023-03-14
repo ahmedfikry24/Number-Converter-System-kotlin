@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import com.example.numberconvertersystem.R
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
@@ -17,8 +18,8 @@ class OctalFragment : Fragment() {
     private lateinit var textViewDecimal: TextView
     private lateinit var textViewHexa: TextView
     private lateinit var editTextOctal: TextInputLayout
-    private lateinit var buttonConvert: Button
-    private var octalNumber: Int? = null
+    private lateinit var buttonClear: Button
+    private var octalNumber: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,57 +39,39 @@ class OctalFragment : Fragment() {
         textViewBinary = view.findViewById(R.id.binaryValue)
         textViewDecimal = view.findViewById(R.id.decimalValue)
         textViewHexa = view.findViewById(R.id.hexaValue)
-        buttonConvert = view.findViewById(R.id.convertButton)
+        buttonClear = view.findViewById(R.id.clearButton)
     }
 
     private fun initListeners() {
-        buttonConvert.setOnClickListener {
-            if (!editTextOctal.editText?.text.isNullOrBlank()) {
-                octalNumber = editTextOctal.editText?.text.toString().toInt()
-                textViewBinary.text = convertOctalToBinary(octalNumber!!).toString()
-                textViewDecimal.text = convertOctalToDecimal(octalNumber!!).toString()
-                textViewHexa.text = convertOctalToHexa(octalNumber!!)
-            }
+      editTextOctal.editText?.addTextChangedListener {
+
+          if (!editTextOctal.editText?.text.isNullOrBlank()) {
+
+              octalNumber = editTextOctal.editText?.text.toString()
+
+              convertOctalToAll()
+          }
+      }
+        buttonClear.setOnClickListener {
+            clearAllTextViews()
         }
     }
 
-    fun convertOctalToDecimal(octal: Int): Int {
-        var octalNumber = octal
-        var decimalNumber = 0
-        var counter = 0
+    private fun convertOctalToAll() {
 
-        while (octalNumber != 0) {
-            decimalNumber += (octalNumber % 10 * 8.0.pow(counter.toDouble())).toInt()
-            ++counter
-            octalNumber /= 10
-        }
+        val outputDecimal = octalNumber!!.toLong(8).toString()
+        val outputBinary = outputDecimal.toLong().toString(2)
+        val outputHexa = outputDecimal.toLong().toString(16)
 
-        return decimalNumber
+        textViewDecimal.text = outputDecimal
+        textViewBinary.text = outputBinary
+        textViewHexa.text = outputHexa.uppercase()
+
     }
-
-    fun convertOctalToBinary(octal: Int): Long {
-
-        var decimalNumber = convertOctalToDecimal(octal)
-        var counter = 1
-        var binaryNumber: Long = 0
-
-        while (decimalNumber != 0) {
-            binaryNumber += (decimalNumber % 2 * counter).toLong()
-            decimalNumber /= 2
-            counter *= 10
-        }
-
-        return binaryNumber
-    }
-
-    private fun convertOctalToHexa(octal: Int): String {
-
-        val decimalNumber = convertOctalToDecimal(octal)
-
-        var hexaNumberNumber = Integer.toHexString(decimalNumber)
-
-        hexaNumberNumber = hexaNumberNumber.uppercase(Locale.getDefault())
-
-        return hexaNumberNumber
+    private fun clearAllTextViews() {
+        textViewDecimal.text = "0"
+        textViewHexa.text = "0"
+        textViewBinary.text = "0"
+        editTextOctal.editText?.text?.clear()
     }
 }

@@ -3,21 +3,21 @@
     <item
         android:id="@+id/binary"
         android:title="@string/binary"
-        android:icon="@drawable/ic_binary"
+        android:icon="@drawable/ic_0"
         />
     <item
         android:id="@+id/decimal"
         android:title="@string/decimal"
-        android:icon="@drawable/ic_decimal"
+        android:icon="@drawable/ic_123"
         />
     <item
         android:id="@+id/octal"
         android:title="@string/octal"
-        android:icon="@drawable/ic_octal"
+        android:icon="@drawable/ic_8"
         />
     <item
         android:id="@+id/hexa"
         android:title="@string/hexa"
-        android:icon="@drawable/ic_hash"
+        android:icon="@drawable/ic_abc"
         />
 </menu>
